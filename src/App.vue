@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+
+
+<script>
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  created() {
+    localStorage.setItem('authToken', 'false');
+
+    this.$router.beforeEach((to, from, next) => {
+      if (to.meta.requiresAuth && localStorage.getItem('authToken') !== 'true') {
+        next('/');
+      } else {
+        next();
+      }
+    });
   }
-}
+};
 </script>
 
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin-top: 60px;
+    }
+
+
 </style>
