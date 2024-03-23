@@ -2,6 +2,13 @@
 
 ## Project setup
 ```
+Login Default
+Username: User
+Password: 12345
+```
+
+## Project setup
+```
 npm install
 ```
 
