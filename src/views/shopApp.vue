@@ -1,21 +1,16 @@
 <template>
   <div class="content">
-    <div class="item-list">
-      <h3>Item List</h3>
-      <table>
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
-          <itemList itemName="GTX 1050TI" :itemPrice="5000" @addCart="addToArray" />
-          <itemList itemName="GTX 1660TI" :itemPrice="15000" @addCart="addToArray" />
-          <itemList itemName="RTX 3090TI" :itemPrice="80000" @addCart="addToArray" />
-          <itemList itemName="RTX 4090TI" :itemPrice="100000" @addCart="addToArray" />
-      </table>
-    </div>
+    <div class="login-items">
+      <h3>💯Not so EasyPC Graphic Cards💯</h3>
+        <div class="login-itemlist">
+          <itemList itemName="GTX 1050TI" :itemPrice="5000" @addCart="addToArray"/>
+          <itemList itemName="GTX 1660TI" :itemPrice="15000" @addCart="addToArray"/>
+          <itemList itemName="RTX 3090TI" :itemPrice="80000" @addCart="addToArray"/>
+          <itemList itemName="RTX 4090TI" :itemPrice="100000" @addCart="addToArray"/>
+        </div>
+      </div>
     <div class="cart-list">
-      <h3>Shopping Cart</h3>
+      <h3>🛒Shopping Cart</h3>
       <cartList :cartList="cartList" @removeCart="removeToArray" />
     </div>
   </div>
@@ -52,21 +47,28 @@ export default {
 </script>
 
 <style>
-    .content {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 
-    .item-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-    .cart-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+th {
+  background-color: #80BCBD;
+}
+
+td {
+  background-color: #FFFC9B;
+}
+
+th, td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
 </style>

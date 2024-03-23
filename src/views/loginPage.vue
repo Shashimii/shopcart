@@ -1,25 +1,25 @@
 <template>
     <div class="login-content">
-        <div class="login-itemlist">
-            <h3>Item List</h3>
-            <table>
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-                    <itemList itemName="GTX 1050TI" :itemPrice="5000" :isDisabled="itsDisabled" />
-                    <itemList itemName="GTX 1660TI" :itemPrice="15000" :isDisabled="itsDisabled" />
-                    <itemList itemName="RTX 3090TI" :itemPrice="80000" :isDisabled="itsDisabled" />
-                    <itemList itemName="RTX 4090TI" :itemPrice="100000" :isDisabled="itsDisabled" />
-            </table>
+        <div class="login-items">
+            <h3>💯Not so EasyPC Graphic Cards💯</h3>
+            <div class="login-itemlist">
+                <itemList itemName="GTX 1050TI" :itemPrice="5000" :disable="btndisabled" />
+                <itemList itemName="GTX 1660TI" :itemPrice="15000" :disable="btndisabled" />
+                <itemList itemName="RTX 3090TI" :itemPrice="80000" :disable="btndisabled" />
+                <itemList itemName="RTX 4090TI" :itemPrice="100000" :disable="btndisabled" />
+            </div>
         </div>
     
         <div class="login-form">
-            <h3>Login</h3>
-            <h5>Enter Password <br> {{ errmsg }}</h5>
-            <input type="password" v-model="password">
-            <button @click="login()">Login</button>
+            <div class="login-input">
+                <h3>Login</h3>
+                <h5>Enter Username <br> {{ error }}</h5>
+                <input type="text" v-model="username">
+                <h5>Enter Password</h5>
+                <input type="password" v-model="password">
+                <button @click="login()">Login</button>
+                <p>username: User</p><p>password: 12345</p>
+            </div>
         </div>
     </div>
 </template>
@@ -35,16 +35,17 @@ export default {
     
     data() {
         return {
+            username: '',
             password: '',
-            errmsg: '',
-            itsDisabled: true
+            error: '',
+            btndisabled: true
         }
     },
 
     methods: {
         login() {
-            if (this.password != '12345') {
-                this.errmsg = 'wrong password';
+            if (this.username !== 'User' || this.password !== '12345') {
+                this.error = 'Wrong Username or Password';
             } else {
                 localStorage.setItem('authToken', 'true'); // Set the 'logged' item in localStorage to 'true'
                 this.$router.push('/shop')
@@ -63,27 +64,31 @@ export default {
     }
 
 .login-form {
-    display: grid;
-    grid-template-rows: repeat(3, 0.1fr);
-    padding-inline: 30%;
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-inline: 20px;
+    padding-block: 0px 20px;
+    background-color: #BBE2EC;
+}
+
+.login-items {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-inline: 20px;
+    padding-block: 0px 20px;
+    height: 80vh;
+    background-color: #EFF396;
 }
 
 .login-itemlist {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 1px solid black;
-  text-align: center;
-  padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 </style>
