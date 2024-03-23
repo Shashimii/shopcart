@@ -1,8 +1,7 @@
 # shopcart
 
-## Project setup
+## Default Login Username & Password
 ```
-Login Default
 Username: User
 Password: 12345
 ```
